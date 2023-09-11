@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if list %}
+    <h1>List: cau hoi:</h1>
+    <ul>
+        {% for item in list %}
+        <li>{{item.question}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h3 style="color:red">No value</h3>
+    {% endif %}
+{% endblock content %}
