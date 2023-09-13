@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if list %}
-    <h1>List: cau hoi:</h1>
-    <ul>
+    <h1>List cau hoi:</h1>
+    <div>
         {% for item in list %}
-        <li>{{item.question}}</li>
+        {% comment %} url detail == name da khai bao o urls.py {% endcomment %}
+        <p>
+            <a href="{% url "detail" item.id %}">{{item.question}}</a>
+        </p>
+      
         {% endfor %}
-    </ul>
+    </div>
     {% else %}
         <h3 style="color:red">No value</h3>
     {% endif %}

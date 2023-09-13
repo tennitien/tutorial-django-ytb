@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{question.question}}</h1>
+    {% if question %}
+        <form action='POST'>
+            {% csrf_token %}
+            {% for item in question.choice_set.all %}
+            <p>
+                <input type="radio" name="choice" id="" value={{item.id}}>
+                <span>{{item.choice}}</span>
+            </p>
+            {% endfor %}
+
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <h3 style="color:red">No Question</h3>
+    {% endif %}
+{% endblock content %}
