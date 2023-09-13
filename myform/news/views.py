@@ -27,6 +27,7 @@ def addPost(req):
 #             return HttpResponse('khong luuu')
 # chuyen sang Classviews
 class SaveNewClass(View):
+    # nhan data from add-form
     def post(self, req):
         q = PostForm(req.POST)
         if q.is_valid():
@@ -34,6 +35,11 @@ class SaveNewClass(View):
             return HttpResponse('luu')
         else:
             return HttpResponse('khong luuu')
+
+    def get(self, req):
+        form = PostForm()
+        context = {'f': form}
+        return render(req, 'news/add_news.html', context)
 
 
 def email_view(req):
