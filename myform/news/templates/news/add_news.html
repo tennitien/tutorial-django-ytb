@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add news</title>
+  </head>
+  <body>
+    {% comment %} form {% endcomment %}
+    <form action="{% url "news:save" %}" method="post">
+        {% comment %} f.title =feilds {% endcomment %}
+        {% csrf_token %}
+        <p>{{f.title}}</p>
+        <p>{{f.content}}</p>
+        
+        <input type="submit" value="Add">
+    </form>
+  </body>
+</html>

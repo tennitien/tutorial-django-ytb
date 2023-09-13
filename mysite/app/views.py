@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Question
+ 
 # Create your views here.
 # thu muc goc tro tu folder template
 def index(req):
@@ -20,4 +22,7 @@ def detailView(req, question_id):
     return render(req,'detail_question.html',context)
 
 def votePost(req,question_id):
-    pass
+    # q= Question.objects.get(question_id)
+    data=req.POST('choice')
+     #choice = input
+    return HttpResponse('choice')

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Email</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Tieu de</td>
+            <td>Noi dung</td>
+            <td>Email</td>
+            <td>CC</td>
+        </tr>
+        <tr>
+            {% comment %} Phu thuoc form {% endcomment %}
+            <td>{{data.title}}</td>
+            <td>{{data.content}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.cc}}</td>
+        </tr>
+    </table>
+</body>
+</html>
