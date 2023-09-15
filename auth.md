@@ -1,6 +1,7 @@
 # xac thuc user da dan nhap chua:
 
 - gioi han nguoi dung
+- note: login_url -->ko doc dc link '' or '/'
 
 ```python
 from django.views import View
@@ -22,6 +23,7 @@ def view_product(req):
     return HttpResponse('decor')
 
 # Cach 3: tot nhat
+# thu tu : LoginRequiredMixin, View --> de tranh loi
 class LoginRequire(LoginRequiredMixin, View):
     login_url='/login/'
     def get(self,req):

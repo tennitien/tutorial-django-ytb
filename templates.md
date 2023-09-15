@@ -176,3 +176,66 @@ urlpatterns = [
 ```python
 path('detail/<int:question_id>',views.detailView, name='detail')
 ```
+
+# model && form
+
+model:
+
+```python
+class Post(models.Model):
+    title= models.CharField(max_length=100)
+    content= models.CharField(max_length=300)
+
+    def __str__(self) -> str:
+        return self.title
+```
+
+form:
+
+- cau truc dien hinh phai co du: Meta= mac dinh ko doi ten
+
+```python
+from django.forms import ModelForm
+from .models import Post
+
+class PostForm(ModelForm):
+    class Meta:
+        model= Post
+        fields= ['title','content']
+```
+
+html:
+
+- url = name : trong urls.py
+- token: bat buoc
+- {fm} : bien trong formModel
+
+```python
+<form action="{% url "add-post" %}" method="post">
+        {% csrf_token %}
+        {{fm}}
+        <input type="submit" value="Add">
+</form>
+```
+
+views:
+
+- get: de hien thi
+- post: nhan du lieu
+- f.save(): phai co moi luu vao db
+
+```python
+class AddPost(View):
+    def get(self,req):
+        f= PostForm()
+        context={'fm':f}
+        return render(req, 'login/add_post.html',context)
+
+    def post(self,req):
+        f= PostForm(req.POST) # nhan du lieu
+        if not f.is_valid():  # check
+            return HttpResponse('nhap sai')
+        f.save() # luu vao database
+        return HttpResponse('ok')
+
+```

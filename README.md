@@ -1,3 +1,26 @@
+# .vscode/settings.json
+
+```json
+  "emmet.includeLanguages": {
+    "css": "css",
+    "html": "html",
+    "scss": "scss",
+    "javascript": "javascriptreact",
+    "django-html": "html"
+  },
+  "emmet.useInlineCompletions": true,
+  "files.associations": {
+    "*html": "html",
+    "*css": "css",
+    "*scss": "scss",
+    "**/*.html":"html",
+    "**/templates/**/*.html":"django-html",
+    "**/templates/**/*":"django-txt",
+  },
+  "python.pythonPath":"/usr/local/bin/python3",
+  "python.languageServer":"Pylance",
+```
+
 # cai dat goi python3 truoc
 
 ```python
@@ -147,4 +170,44 @@ from .models import Question,Choice
 # Register your models here.
 admin.site.register(Question)
 admin.site.register(Choice)
+```
+
+# tao **str** thay doi hien thi model trong admin page
+
+```python
+class Post(models.Model):
+    title= models.CharField(max_length=100)
+    content= models.CharField(max_length=300)
+
+    def __str__(self) -> str:
+        return self.title
+```
+
+# static img
+
+```python
+python manage.py collectstatic
+```
+
+html:
+
+- load static
+
+```python
+{% load static %}
+```
+
+html:
+
+```django
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <img src="{% static "login/images/ava.jpeg" %} " alt="">
+  </body>
+</html>
 ```
